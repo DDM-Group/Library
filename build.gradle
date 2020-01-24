@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    implementation('org.postgresql:postgresql')
     testCompile 'com.jayway.jsonpath:json-path'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 }
