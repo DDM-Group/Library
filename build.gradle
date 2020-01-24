@@ -1,6 +1,12 @@
 plugins {
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
 }
+
+apply plugin: 'application'
+
+mainClassName = 'ddm.MainApplication'
 
 group 'DDM group'
 version '1.0-SNAPSHOT'
@@ -12,5 +18,13 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'com.jayway.jsonpath:json-path'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
 }
+
+jar {
+    baseName = 'library'
+    version =  '0.1.0'
+}
+
+
