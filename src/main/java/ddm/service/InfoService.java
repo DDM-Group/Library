@@ -2,6 +2,7 @@ package ddm.service;
 
 import ddm.enums.Category;
 import ddm.entity.Info;
+import ddm.enums.InfoStatus;
 import ddm.exception.FileNotFoundException;
 import ddm.repository.InfoRepository;
 import ddm.repository.PhotoRepository;
@@ -14,23 +15,22 @@ import java.util.List;
 public class InfoService {
 
     private final InfoRepository infoRepository;
-    private final PhotoRepository photoRepository;
 
     @Autowired
-    public InfoService(InfoRepository infoRepository, PhotoRepository photoRepository) {
+    public InfoService(InfoRepository infoRepository) {
         this.infoRepository = infoRepository;
-        this.photoRepository = photoRepository;
     }
 
     public Info getInfo(int id) throws FileNotFoundException {
         return infoRepository.findById(id).orElseThrow(FileNotFoundException::new);
     }
 
-    public List<Info> getInfoListByCategory(Category category){
+    public List<Info> getInfoListByCategory(Category category) {
         return infoRepository.findAllByCategory(category);
     }
 
-    public Info createInfo(Info info){
+    public Info createInfo(Info info) {
+        info.setStatus(InfoStatus.AVAILABLE);
         return infoRepository.save(info);
     }
 
@@ -44,7 +44,8 @@ public class InfoService {
 
     public int deleteInfo(int id) throws FileNotFoundException {
         Info oldInfo = infoRepository.findById(id).orElseThrow(FileNotFoundException::new);
-        infoRepository.delete(oldInfo);
+        oldInfo.setStatus(InfoStatus.DELETED);
+        infoRepository.save(oldInfo);
         return id;
     }
 

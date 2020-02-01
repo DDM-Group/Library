@@ -1,6 +1,7 @@
 package ddm.entity;
 
 import ddm.enums.Category;
+import ddm.enums.InfoStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ public class Info {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int infoId;
 
     private String name;
 
@@ -27,7 +28,9 @@ public class Info {
     private Category category;
 
     @ManyToOne(targetEntity = Photo.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "photo_id")
+    @JoinColumn(name = "photoId")
     private Photo photo;
+
+    private InfoStatus status;
 
 }

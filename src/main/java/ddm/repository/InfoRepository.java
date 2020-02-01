@@ -8,10 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface InfoRepository extends JpaRepository<Info, Integer>
-{
+public interface InfoRepository extends JpaRepository<Info, Integer> {
 
-    List<Info> findAllByCategory (Category category);
-
+    List<Info> findAllByCategory(Category category);
 
 }

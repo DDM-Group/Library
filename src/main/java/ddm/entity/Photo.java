@@ -16,9 +16,9 @@ import javax.persistence.*;
 public class Photo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int photoId;
 
-    private String name;
+    private String link;
 
 }
