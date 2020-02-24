@@ -2,9 +2,11 @@ package ddm.controller;
 
 import ddm.entity.Info;
 import ddm.enums.Category;
-import ddm.exception.FileNotFoundException;
+import ddm.enums.InfoStatus;
+import ddm.exception.DataNotFoundException;
 import ddm.service.InfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,27 +23,29 @@ public class InfoController {
     }
 
     @GetMapping
-    public List<Info> getInfoList(@RequestParam Category category) {
-        return infoService.getInfoListByCategory(category);
+    public List<Info> getInfoList(@RequestParam Category category,
+                                  @RequestParam(required = false, defaultValue = "AVAILABLE") InfoStatus status) {
+        return infoService.getInfoListByCategory(category, status);
     }
 
     @GetMapping("/{id}")
-    public Info getInfo(@PathVariable int id) throws FileNotFoundException {
-        return infoService.getInfo(id);
+    public Info getInfo(@PathVariable int id,
+                        @RequestParam(required = false, defaultValue = "AVAILABLE") InfoStatus status) throws DataNotFoundException {
+        return infoService.getInfo(id, status);
     }
 
-    @PostMapping
+    @PostMapping(consumes = (MediaType.APPLICATION_JSON_VALUE))
     public Info createInfo(@RequestBody Info info) {
         return infoService.createInfo(info);
     }
 
     @PutMapping("/{id}")
-    public Info updateInfo(@RequestBody Info info, @PathVariable int id) throws FileNotFoundException {
+    public Info updateInfo(@RequestBody Info info, @PathVariable int id) throws DataNotFoundException {
         return infoService.updateInfo(info, id);
     }
 
     @DeleteMapping("/{id}")
-    public int deleteInfo(@PathVariable int id) throws FileNotFoundException {
+    public int deleteInfo(@PathVariable int id) throws DataNotFoundException {
         return infoService.deleteInfo(id);
     }
 

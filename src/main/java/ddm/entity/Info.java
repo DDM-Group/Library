@@ -18,7 +18,8 @@ import javax.persistence.*;
 public class Info {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "infoIdGenerator")
+    @SequenceGenerator(name = "infoIdGenerator", sequenceName = "info_seq", allocationSize = 1)
     private int infoId;
 
     private String name;
@@ -33,4 +34,19 @@ public class Info {
 
     private InfoStatus status;
 
+    public void setCategory(String category) {
+        this.category = Category.valueOf(category);
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setStatus(String status) {
+        this.status = InfoStatus.valueOf(status);
+    }
+
+    public void setStatus(InfoStatus status) {
+        this.status = status;
+    }
 }

@@ -27,7 +27,7 @@ CREATE TABLE "info"
 (
     "info_id"  int         NOT NULL,
     "name"     varchar(50) NOT NULL,
-    "data"     json        NOT NULL,
+    "data"     text        NOT NULL,
     "photo_id" int         NULL,
     "status"   int         NOT NULL,
     "category" int         NOT NULL,
@@ -44,6 +44,11 @@ CREATE INDEX "fkIdx_21" ON "info"
      "photo_id"
         );
 
+CREATE SEQUENCE info_seq
+    START 1
+    INCREMENT 1
+    MINVALUE 1
+    OWNED BY info.info_id;
 
 
 
