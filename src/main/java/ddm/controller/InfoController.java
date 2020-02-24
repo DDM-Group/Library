@@ -7,7 +7,6 @@ import ddm.service.InfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -38,13 +37,11 @@ public class InfoController {
 
     @PutMapping("/{id}")
     public Info updateInfo(@RequestBody Info info, @PathVariable int id) throws FileNotFoundException {
-
         return infoService.updateInfo(info, id);
     }
 
     @DeleteMapping("/{id}")
     public int deleteInfo(@PathVariable int id) throws FileNotFoundException {
-
         return infoService.deleteInfo(id);
     }
 

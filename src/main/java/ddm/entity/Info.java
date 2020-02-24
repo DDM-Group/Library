@@ -27,7 +27,7 @@ public class Info {
 
     private Category category;
 
-    @ManyToOne(targetEntity = Photo.class, fetch = FetchType.LAZY)
+    @ManyToOne(targetEntity = Photo.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "photoId")
     private Photo photo;
 

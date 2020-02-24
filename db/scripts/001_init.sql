@@ -1,11 +1,10 @@
 -- *************** SqlDBM: PostgreSQL ****************;
 -- ***************************************************;
 
-DROP TABLE "info";
+-- DROP TABLE "info";
 
 
-DROP TABLE "photo";
-
+-- DROP TABLE "photo";
 
 -- ************************************** "photo"
 
