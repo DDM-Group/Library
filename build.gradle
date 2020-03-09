@@ -2,7 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'java'
-    id 'war'
+    //id 'war'
 }
 
 apply plugin: 'application'
@@ -41,12 +41,12 @@ jar {
 
 }*/
 
-war {
+/*war {
     baseName = 'library'
     version =  '0.1.0'
     archiveName = 'library.jar'
     mainClassName = 'ddm.MainApplication'
-}
+}*/
 
 /*bootWar{
     classifier = 'boot'
