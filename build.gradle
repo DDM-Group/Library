@@ -61,7 +61,6 @@ task stage{
 
 jar{
     mustRunAfter clean
-    mustRunAfter bootWar
 }
 
 
