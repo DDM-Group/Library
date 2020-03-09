@@ -52,7 +52,7 @@ bootWar{
 }
 
 task stage{
-    dependsOn build, clean
+    dependsOn bootJar, build, clean
 }
 
 build{
