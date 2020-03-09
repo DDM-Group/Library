@@ -1,4 +1,6 @@
-FROM openjdk:8
-ADD build/libs/library.jar library.war
-EXPOSE 8085
-ENTRYPOINT ['java', '-jar', 'library.war']
+FROM heroku/jvm
+ONBUILD COPY ["*.gradle", "gradlew", "*.properties", "/app/user/"]
+ONBUILD COPY ["gradle/wrapper/*", "/app/user/gradle/wrapper/"]
+ONBUILD RUN ./gradlew dependencies; true
+ONBUILD RUN ./gradlew build; true
+ONBUILD RUN ./gradlew stage

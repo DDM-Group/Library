@@ -30,26 +30,30 @@ dependencies {
 jar {
     baseName = 'library'
     version =  '0.1.0'
+    archiveName = 'library.jar'
+    mainClassName = 'ddm.MainApplication'
 }
 
-bootJar{
+/*bootJar{
     classifier = 'boot'
-    mainClassName = 'ddm.MainApplication'
+
     launchScript()
-    archiveName = 'library.jar'
-}
+
+}*/
 
 war {
     baseName = 'library'
     version =  '0.1.0'
+    archiveName = 'library.jar'
+    mainClassName = 'ddm.MainApplication'
 }
 
-bootWar{
+/*bootWar{
     classifier = 'boot'
     mainClassName = 'ddm.MainApplication'
     launchScript()
     archiveName = 'library.war'
-}
+}*/
 
 task stage{
     dependsOn bootJar, build, clean
