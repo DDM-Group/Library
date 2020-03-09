@@ -56,10 +56,10 @@ war {
 }*/
 
 task stage{
-    dependsOn bootJar, build, clean
+    dependsOn war, clean
 }
 
-build{
+war{
     mustRunAfter clean
 }
 
