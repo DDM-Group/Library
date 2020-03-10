@@ -23,7 +23,7 @@ public class InfoController {
     }
 
     @GetMapping
-    public List<Info> getInfoList(@RequestParam Category category,
+    public List<Info> getInfoList(@RequestParam(required = false, defaultValue = "ALL") Category category,
                                   @RequestParam(required = false, defaultValue = "AVAILABLE") InfoStatus status) {
         return infoService.getInfoListByCategory(category, status);
     }

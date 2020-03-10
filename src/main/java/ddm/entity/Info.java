@@ -34,16 +34,8 @@ public class Info {
 
     private InfoStatus status;
 
-    public void setCategory(String category) {
-        this.category = Category.valueOf(category);
-    }
-
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public void setStatus(String status) {
-        this.status = InfoStatus.valueOf(status);
     }
 
     public void setStatus(InfoStatus status) {
