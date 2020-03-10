@@ -25,6 +25,9 @@ public class InfoService {
     }
 
     public List<Info> getInfoListByCategory(Category category, InfoStatus status) {
+        if (category.equals(Category.ALL)){
+            return infoRepository.findAllByStatus(status);
+        }
         return infoRepository.findAllByCategoryAndStatus(category, status);
     }
 

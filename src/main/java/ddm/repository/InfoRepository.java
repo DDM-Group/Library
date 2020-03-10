@@ -14,6 +14,8 @@ public interface InfoRepository extends JpaRepository<Info, Integer> {
 
     List<Info> findAllByCategoryAndStatus(Category category, InfoStatus status);
 
+    List<Info> findAllByStatus(InfoStatus status);
+
     Optional<Info> findByInfoIdAndStatus(int infoId, InfoStatus status);
 
 }
