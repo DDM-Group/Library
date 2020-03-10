@@ -20,7 +20,7 @@ API
 
 GET ..api/v1/info
 Request Params:
-category - PERSON|BG|PLANET
+category - ALL|PERSON|BG|PLANET((required = false, defaultValue = "ALL"))
 status - AVAILABLE|HIDDEN|DELETED((required = false, defaultValue = "AVAILABLE"))
 
 URL example:
@@ -28,17 +28,9 @@ localhost:8080/api/v1/info?category=PERSON
 Output example:
 [
     {
-        "infoId": 1,
-        "name": "1",
-        "data": "\"{'test': test}\"",
-        "category": "PERSON",
-        "photo": null,
-        "status": "AVAILABLE"
-    },
-    {
-        "infoId": 2,
-        "name": "2",
-        "data": "\"{'test': test}\"",
+        "infoId": 3,
+        "name": "Random",
+        "data": "{'test': test}",
         "category": "PERSON",
         "photo": null,
         "status": "AVAILABLE"
@@ -46,6 +38,7 @@ Output example:
 ]
 
 Запрос на получение записи info
+
 GET ..api/v1/info/{id}
 Path Variable:
 id - id записи в бд
@@ -56,9 +49,9 @@ URL example:
 localhost:8080/api/v1/info/2
 Output example:
 {
-    "infoId": 2,
-    "name": "2",
-    "data": "\"{'test': test}\"",
+    "infoId": 3,
+    "name": "Random",
+    "data": "{'test': test}",
     "category": "PERSON",
     "photo": null,
     "status": "AVAILABLE"
@@ -66,7 +59,6 @@ Output example:
 
 Запрос на удаление записи info 
 метод возвращает id записи
-(//TODO:если не нужно, сообщи)
 
 DELETE ..api/v1/info/{id}
 Path Variable:
@@ -81,11 +73,11 @@ Output example:
 POST ..api/v1/info
 
 RequestBody example:
-{
-    "name": "1",
-    "data": "{'test': test}",
-    "category": "PERSON",
-    "status": "HIDDEN"
+{ 
+    "name": "Random", 
+    "data": "{'test': test}", 
+    "category": "PERSON", 
+    "status": "AVAILABLE"
 }
 
 URL example:
@@ -116,14 +108,14 @@ RequestBody example:
 }
 
 URL example:
-localhost:8080/api/v1/info
+localhost:8080/api/v1/info/4
 Output example:
 {
-    "infoId": 6,
-    "name": "1",
+    "infoId": 4,
+    "name": "Random",
     "data": "{'test': test}",
     "category": "PERSON",
     "photo": null,
-    "status": "AVAILABLE"
+    "status": "HIDDEN"
 }
 
