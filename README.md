@@ -101,7 +101,7 @@ id - id записи в бд
 
 RequestBody example:
 {
-    "name": "1",
+    "name": "Random",
     "data": "{'test': test}",
     "category": "PERSON",
     "status": "HIDDEN"
